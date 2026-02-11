@@ -2,6 +2,7 @@
   <dictionary name="project">
     <words>
       <w>docsrs</w>
+      <w>olah's</w>
       <w>rustdocflags</w>
       <w>rustfmt</w>
     </words>
