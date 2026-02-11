@@ -1,0 +1,95 @@
+# Copyright 2026 Nicolas Spijkerman
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+[package]
+name          = "multi-layer-perceptron"
+version       = "0.1.0"
+authors       = ["Nicolas Spijkerman <nicospijke@gmail.com>"]
+edition       = "2024"
+rust-version  = "1.93.0"
+description   = "Multi-Layer Perceptrons for flexible neural network tasks"
+documentation = "TODO"
+readme        = "README.md"
+homepage      = "https://github.com/NickSpyker/multi-layer-perceptron"
+repository    = "https://github.com/NickSpyker/multi-layer-perceptron"
+license       = "MIT OR Apache-2.0"
+keywords      = ["neural-network", "mlp", "machine-learning", "deep-learning"]
+categories    = ["science", "algorithms"]
+exclude       = [".github/", "benches/", "examples/", "tests/"]
+
+[lib]
+name       = "mlp"
+path       = "src/lib.rs"
+crate-type = ["lib"]
+doctest    = true
+bench      = true
+test       = true
+
+[[example]]
+name = "basic_usage"
+
+[[bench]]
+name    = "throughput"
+harness = false
+
+[dependencies]
+
+[dev-dependencies]
+criterion = { version = "0.8", features = ["html_reports"] }
+
+[features]
+default = []
+
+[lints.rust]
+unsafe_code  = "forbid"
+missing_docs = "warn"
+
+[lints.clippy]
+# Enable lint groups at low priority so per-lint overrides take precedence
+all      = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+nursery  = { level = "warn", priority = -1 }
+cargo    = { level = "warn", priority = -1 }
+# Restriction lints: cherry-picked, never enable the whole group
+unwrap_used   = "deny"
+expect_used   = "deny"
+panic         = "deny"
+todo          = "deny"
+unimplemented = "deny"
+exit          = "deny"
+dbg_macro     = "deny"
+print_stdout  = "deny"
+print_stderr  = "deny"
+# Allow noisy pedantic lints that produce too many false positives
+module_name_repetitions = "allow"
+multiple_crate_versions = "allow"
+similar_names           = "allow"
+too_many_lines          = "allow"
+
+[profile.dev]
+opt-level = 0
+debug     = true
+
+[profile.release]
+opt-level     = 3
+lto           = true
+codegen-units = 1
+strip         = true
+
+[profile.bench]
+inherits = "release"
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
