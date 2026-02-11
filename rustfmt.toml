@@ -20,46 +20,21 @@ tab_spaces    = 4
 newline_style = "Unix"
 
 # Imports
-reorder_imports     = true
-reorder_modules     = true
-imports_granularity = "Crate"
-group_imports       = "StdExternalCrate"
+reorder_imports = true
+reorder_modules = true
 
 # Functions
 fn_params_layout = "Tall"
-fn_single_line   = false
 
 # Structs & enums
-struct_lit_single_line       = false
-struct_variant_width         = 35
-enum_discrim_align_threshold = 20
-
-# Braces & control flow
-brace_style         = "SameLineWhere"
-control_brace_style = "AlwaysSameLine"
+struct_variant_width = 35
 
 # Match
-match_arm_blocks           = true
 match_block_trailing_comma = true
-
-# Comments
-comment_width            = 80
-wrap_comments            = true
-normalize_comments       = true
-normalize_doc_attributes = true
 
 # Misc
 use_field_init_shorthand = true
 use_try_shorthand        = true
 remove_nested_parens     = true
-blank_lines_upper_bound  = 1
-blank_lines_lower_bound  = 0
 use_small_heuristics     = "Default"
-overflow_delimited_expr  = false
-reorder_impl_items       = true
-space_after_colon        = true
-space_before_colon       = false
-spaces_around_ranges     = false
-type_punctuation_density = "Wide"
-where_single_line        = false
 force_explicit_abi       = true
